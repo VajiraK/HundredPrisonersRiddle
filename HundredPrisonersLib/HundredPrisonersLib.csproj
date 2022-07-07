@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F5F41EE-8854-43FF-80ED-AEF62C2AECD3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>HundredPrisonersRiddle</RootNamespace>
-    <AssemblyName>HundredPrisonersRiddle</AssemblyName>
+    <ProjectGuid>{6CE6DB9C-FACE-4AB3-A3C9-6E5178D54209}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HundredPrisonersLib</RootNamespace>
+    <AssemblyName>HundredPrisonersLib</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,17 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\Box.cs" />
+    <Compile Include="Interfaces\IRoom.cs" />
+    <Compile Include="Interfaces\IRiddle.cs" />
+    <Compile Include="Interfaces\IPisoner.cs" />
+    <Compile Include="Interfaces\IPrison.cs" />
+    <Compile Include="Interfaces\IBox.cs" />
+    <Compile Include="Classes\Prison.cs" />
+    <Compile Include="Classes\Prisoner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HundredPrisonersLib\HundredPrisonersLib.csproj">
-      <Project>{6ce6db9c-face-4ab3-a3c9-6e5178d54209}</Project>
-      <Name>HundredPrisonersLib</Name>
-    </ProjectReference>
+    <Compile Include="Classes\Riddle.cs" />
+    <Compile Include="Classes\Room.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

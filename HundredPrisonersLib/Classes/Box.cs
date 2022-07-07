@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
 {
-    internal class Box
+    public class Box : IBox
     {
-        public int inside;
-        public int outside;
         private bool doPrint = false;
+
+        public int Inside { get; set; }
+        public int Outside { get; set; }
 
         public Box(int outside, int inside)
         {
-            this.inside = inside;
-            this.outside = outside;
+            this.Inside = inside;
+            this.Outside = outside;
         }
 
         public void Print()
         {
             if (doPrint)
-                Console.WriteLine($"Box {this.outside} -> {this.inside}");
+                Console.WriteLine($"Box {this.Outside} -> {this.Inside}");
         }
     }
 }

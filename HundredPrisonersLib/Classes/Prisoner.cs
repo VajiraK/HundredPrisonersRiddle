@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
 {
-    internal class Prisoner
+    public class Pisoner : IPisoner
     {
         public int PrisonerId { get; set; }
 
-        public Prisoner(int prisonerId)
+        public Pisoner(int prisonerId)
         {
             PrisonerId = prisonerId;
         }
 
-        public Box FindYourBox(Room room, int allowedNoOfBoxes)
+        public IBox FindYourBox(IRoom room, int allowedNoOfBoxes)
         {
             int boxId = this.PrisonerId;
 
             for (int i = 0; i < allowedNoOfBoxes; i++)
             {
-                Box box = room.GetaBox(boxId);
+                IBox box = room.GetaBox(boxId);
 
-                if (box.inside != this.PrisonerId)
+                if (box.Inside != this.PrisonerId)
                 {//My no not in the box
-                    box = room.GetaBox(box.inside);
-                    boxId = box.outside;
+                    box = room.GetaBox(box.Inside);
+                    boxId = box.Outside;
                     i++;
                 }
                 else

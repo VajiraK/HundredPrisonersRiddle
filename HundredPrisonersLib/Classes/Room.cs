@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
 {
-    internal class Room
+    public class Room : IRoom
     {
-        public Box[] boxes = new Box[100];
+        public IBox[] boxes = new Box[100];
         Random random = new Random(DateTime.Now.Millisecond);
 
         public void ArrangeBoxes()
@@ -37,8 +37,8 @@ namespace HundredPrisonersRiddle
                 for (i = 0; i < 100; i++)
                 {
                     if (boxes[i] != null)
-                    { 
-                        if (boxes[i].inside == insideNumber)
+                    {
+                        if (boxes[i].Inside == insideNumber)
                             notFound = true;
                     }
                     else
@@ -52,12 +52,12 @@ namespace HundredPrisonersRiddle
             return insideNumber;
         }
 
-        public Box GetaBox(int boxNumber)
+        public IBox GetaBox(int boxNumber)
         {
             for (int i = 0; i < 100; i++)
             {
-                if(boxes[i].outside == boxNumber)
-                    return boxes[i];    
+                if (boxes[i].Outside == boxNumber)
+                    return boxes[i];
             }
 
             return null;
