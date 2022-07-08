@@ -8,14 +8,27 @@ namespace HundredPrisonersRiddle
 {
     public class Riddle : IRiddle
     {
-        public bool Run(int allowedNoOfBoxes)
+        IRoom room;
+        IPrison prison;
+
+        public IRoom GetRoom()
         {
-            int i;
-            IRoom room = new Room();
-            IPrison prison = new Prison();
+            return room;
+        }
+
+        public void Initialize()
+        {
+            room = new Room();
+            prison = new Prison();
 
             room.ArrangeBoxes();
             prison.FillPrisoners();
+
+        }
+
+        public bool Run(int allowedNoOfBoxes)
+        {
+            int i;
 
             for (i = 0; i < 100; i++)
             {

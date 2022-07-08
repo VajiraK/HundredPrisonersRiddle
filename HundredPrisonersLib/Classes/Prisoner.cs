@@ -21,11 +21,13 @@ namespace HundredPrisonersRiddle
 
             for (int i = 0; i < allowedNoOfBoxes; i++)
             {
-                IBox box = room.GetaBox(boxId);
+                var box = room.GetaBox(boxId);
+                box.InvokeBoxVisited();
 
                 if (box.Inside != this.PrisonerId)
                 {//My no not in the box
                     box = room.GetaBox(box.Inside);
+                    box.InvokeBoxVisited();
                     boxId = box.Outside;
                     i++;
                 }

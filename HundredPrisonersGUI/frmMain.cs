@@ -2,30 +2,56 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing;
+using HundredPrisonersRiddle;
 
 namespace HundredPrisonersGUI
 {
     public partial class frmMain : Form
     {
+        IRiddle riddle;
+
         public frmMain()
         {
             InitializeComponent();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            
+            int top = 0;
+            int left = 0;
+            int step = 50;
+            int boxCount = 0;
+
+            riddle = new Riddle();
+            riddle.Initialize();
+            IRoom room = riddle.GetRoom();
+
+            for (int a = 0; a < 10; a++)
+            {
+                for (int b = 0; b < 10; b++)
+                {
+                    boxCount++;
+                    var box = room.GetaBox(boxCount);
+
+                    var boxControl = new BoxControl()
+                    {
+                        Box = box,
+                        Top = top,
+                        Left = left
+                    };
+
+                    this.Controls.Add(boxControl);
+                    left += step;
+                }
+
+                top += step;
+                left = 0;
+            }
         }
 
-        private void frmMain_Paint(object sender, PaintEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            Graphics g = e.Graphics;
-
-            using (Pen selPen = new Pen(Color.Blue))
-            {
-
-                g.DrawRectangle(selPen, 10, 10, 50, 50);
-            }
+            riddle.Run(100);
         }
     }
 }

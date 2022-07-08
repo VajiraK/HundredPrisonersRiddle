@@ -10,6 +10,8 @@ namespace HundredPrisonersRiddle
     {
         private bool doPrint = false;
 
+        public event Visited BoxVisited;
+
         public int Inside { get; set; }
         public int Outside { get; set; }
 
@@ -23,6 +25,11 @@ namespace HundredPrisonersRiddle
         {
             if (doPrint)
                 Console.WriteLine($"Box {this.Outside} -> {this.Inside}");
+        }
+
+        public void InvokeBoxVisited()
+        {
+            this.BoxVisited?.Invoke();
         }
     }
 }
