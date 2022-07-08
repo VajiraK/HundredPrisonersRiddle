@@ -12,7 +12,7 @@ namespace HundredPrisonersRiddle
         {
             do
             {
-                Riddle riddle = new Riddle();
+                IRiddle riddle = new Riddle();
                 int c = 0;
 
                 for (int i = 0; i < 100; i++)
