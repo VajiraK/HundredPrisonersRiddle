@@ -37,7 +37,7 @@ namespace HundredPrisonersRiddle
 
                 if (box != null)
                 {
-                    box.Print();
+                    //box.Print();
                 }
                 else
                 {

@@ -8,7 +8,7 @@ namespace HundredPrisonersRiddle
 {
     public class Box : IBox
     {
-        private bool doPrint = false;
+        private bool doPrint = true;
 
         public event Visited BoxVisited;
 

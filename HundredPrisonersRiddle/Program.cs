@@ -17,6 +17,7 @@ namespace HundredPrisonersRiddle
 
                 for (int i = 0; i < 100; i++)
                 {
+                    riddle.Initialize();
                     bool ret = riddle.Run(50);
 
                     if (ret)

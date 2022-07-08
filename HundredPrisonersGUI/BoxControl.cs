@@ -40,19 +40,5 @@ namespace HundredPrisonersGUI
             Graphics g = e.Graphics;
             g.DrawRectangle(new Pen(Color.Black), r);
         }
-
-        //public bool Visited 
-        //{
-        //    set {
-        //        if (value)
-        //        {
-        //            this.BackColor = Color.LightGray;
-        //        }
-        //        else
-        //        {
-        //            this.BackColor = SystemColors.Control;
-        //        }
-        //    }
-        //}
     }
 }

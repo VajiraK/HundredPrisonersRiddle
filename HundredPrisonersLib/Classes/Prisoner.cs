@@ -22,17 +22,27 @@ namespace HundredPrisonersRiddle
             for (int i = 0; i < allowedNoOfBoxes; i++)
             {
                 var box = room.GetaBox(boxId);
-                box.InvokeBoxVisited();
+                box.Print();
 
                 if (box.Inside != this.PrisonerId)
-                {//My no not in the box
+                {//No not his bos :(
                     box = room.GetaBox(box.Inside);
-                    box.InvokeBoxVisited();
-                    boxId = box.Outside;
+                    box.Print();
+
+                    if (box.Inside == this.PrisonerId)
+                    {//Found his box :)
+                        box.InvokeBoxVisited();
+                        Console.WriteLine("FOUD");
+                        return box;
+                    }
+
+                    boxId = box.Inside;
                     i++;
                 }
                 else
-                {
+                {//Found his box :)
+                    box.InvokeBoxVisited();
+                    Console.WriteLine("FOUD");
                     return box;
                 }
             }
