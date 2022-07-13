@@ -51,7 +51,7 @@ namespace HundredPrisonersGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            riddle.Run(60);
+            riddle.Run(54);
         }
     }
 }

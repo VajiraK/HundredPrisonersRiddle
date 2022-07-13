@@ -9,10 +9,14 @@ namespace HundredPrisonersRiddle
     public class Pisoner : IPisoner
     {
         public int PrisonerId { get; set; }
+        public List<int> VisitedBoxes { get; set; }
+        public bool FoundMyBox { set { } }
 
         public Pisoner(int prisonerId)
         {
             PrisonerId = prisonerId;
+            VisitedBoxes = new List<int>();
+            FoundMyBox = false;
         }
 
         public IBox FindYourBox(IRoom room, int allowedNoOfBoxes)
@@ -21,18 +25,16 @@ namespace HundredPrisonersRiddle
 
             for (int i = 0; i < allowedNoOfBoxes; i++)
             {
-                var box = room.GetaBox(boxId);
-                box.Print();
+                var box = VistiteBox(room, boxId);
 
                 if (box.Inside != this.PrisonerId)
                 {//No not his bos :(
-                    box = room.GetaBox(box.Inside);
-                    box.Print();
+                    box = VistiteBox(room, box.Inside);
 
                     if (box.Inside == this.PrisonerId)
                     {//Found his box :)
                         box.InvokeBoxVisited();
-                        Console.WriteLine("FOUD");
+                        FoundMyBox = true;
                         return box;
                     }
 
@@ -42,12 +44,19 @@ namespace HundredPrisonersRiddle
                 else
                 {//Found his box :)
                     box.InvokeBoxVisited();
-                    Console.WriteLine("FOUD");
+                    FoundMyBox = true;
                     return box;
                 }
             }
 
             return null;
+        }
+
+        private IBox VistiteBox(IRoom room, int boxId)
+        {
+            var box = room.GetaBox(boxId);
+            VisitedBoxes.Add(box.Outside);
+            return box;
         }
     }
 }

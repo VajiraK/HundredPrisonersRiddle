@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
@@ -21,7 +22,7 @@ namespace HundredPrisonersRiddle
             room = new Room();
             prison = new Prison();
 
-            room.ArrangeBoxes();
+            //room.ArrangeBoxes();
             prison.FillPrisoners();
 
         }
@@ -29,23 +30,18 @@ namespace HundredPrisonersRiddle
         public bool Run(int allowedNoOfBoxes)
         {
             int i;
+            IBox box = null;
 
             for (i = 0; i < 100; i++)
             {
                 IPisoner prisoner = prison.GetPrisoner(i + 1);
-                IBox box = prisoner.FindYourBox(room, allowedNoOfBoxes);
+                box = prisoner.FindYourBox(room, allowedNoOfBoxes);
 
-                if (box != null)
-                {
-                    //box.Print();
-                }
-                else
-                {
+                if (box == null)
                     break;
-                }
             }
 
-            return i == 100;
+            return (i == 100) && (box != null);
         }
     }
 }

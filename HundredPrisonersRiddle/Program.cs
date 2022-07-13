@@ -10,7 +10,7 @@ namespace HundredPrisonersRiddle
     {
         static void Main(string[] args)
         {
-            do
+            for (int a = 0; a < 10000; a++)
             {
                 IRiddle riddle = new Riddle();
                 int c = 0;
@@ -24,12 +24,12 @@ namespace HundredPrisonersRiddle
                         c++;
                 }
 
+                if(c > 1)
+                   Console.WriteLine(c);
+            }
 
-                Console.WriteLine(c);
-
-                Console.ReadKey();
-            } while (true);
-
+            Console.WriteLine("done!");
+            Console.ReadKey();
         }
     }
 }

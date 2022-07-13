@@ -8,10 +8,15 @@ namespace HundredPrisonersRiddle
 {
     public class Room : IRoom
     {
-        public IBox[] boxes = new Box[100];
+        IBox[] boxes = new Box[100];
         Random random = new Random(DateTime.Now.Millisecond);
 
-        public void ArrangeBoxes()
+        public Room()
+        {
+            ArrangeBoxes();
+        }
+
+        private void ArrangeBoxes()
         {
             for (int i = 0; i < 100; i++)
             {

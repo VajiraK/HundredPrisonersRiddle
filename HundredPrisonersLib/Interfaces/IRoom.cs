@@ -2,7 +2,7 @@
 {
     public interface IRoom
     {
-        void ArrangeBoxes();
+        //void ArrangeBoxes();
         IBox GetaBox(int boxNumber);
     }
 }
