@@ -1,4 +1,5 @@
-﻿using HundredPrisonersRiddle;
+﻿using HundredPrisonersLib.Classes;
+using HundredPrisonersRiddle;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace UnitTestHundredPrisonersRiddle
         [TestMethod]
         public void TestFindYourBox()
         {
-            IPisoner p = new Pisoner(7);
-            IRoom r = new Room();
-            IBox b = p.FindYourBox(r, 100);
+            Factory f = new Factory();
+            IPrisoner p = f.GetPrisoner(7, 50);
+            IRoom r = f.GetRoom();
+            IBox b = p.FindYourBox(r);
             Assert.AreEqual(b.Inside, 7);
         }
 
@@ -22,7 +24,8 @@ namespace UnitTestHundredPrisonersRiddle
         {
             int[] inside = new int[100];
             int[] outside = new int[100];
-            IRoom r = new Room();
+            Factory f = new Factory();
+            IRoom r = f.GetRoom();
             IBox b;
 
             for (int i = 1; i < 101; i++)
@@ -41,7 +44,8 @@ namespace UnitTestHundredPrisonersRiddle
         [TestMethod]
         public void TestRoomBoxValues()
         {
-            IRoom r = new Room();
+            Factory f = new Factory();
+            IRoom r = f.GetRoom();
             IBox b;
 
             for (int i = 1; i < 101; i++)

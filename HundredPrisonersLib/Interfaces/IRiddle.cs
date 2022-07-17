@@ -2,8 +2,8 @@
 {
     public interface IRiddle
     {
-        bool Run(int allowedNoOfBoxes);
-        void Initialize();
+        bool Run();
+        void Initialize(int allowedNoOfBoxes);
 
         IRoom GetRoom();
     }

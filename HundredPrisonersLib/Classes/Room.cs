@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
 {
-    public class Room : IRoom
+    internal class Room : IRoom
     {
         IBox[] boxes = new Box[100];
         Random random = new Random(DateTime.Now.Millisecond);

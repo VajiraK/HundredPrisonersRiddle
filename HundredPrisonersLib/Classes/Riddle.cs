@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
 {
-    public class Riddle : IRiddle
+    internal class Riddle : IRiddle
     {
         IRoom room;
         IPrison prison;
@@ -17,25 +17,22 @@ namespace HundredPrisonersRiddle
             return room;
         }
 
-        public void Initialize()
+        public void Initialize(int allowedNoOfBoxes)
         {
             room = new Room();
             prison = new Prison();
-
-            //room.ArrangeBoxes();
-            prison.FillPrisoners();
-
+            prison.FillPrisoners(allowedNoOfBoxes);
         }
 
-        public bool Run(int allowedNoOfBoxes)
+        public bool Run()
         {
             int i;
             IBox box = null;
 
             for (i = 0; i < 100; i++)
             {
-                IPisoner prisoner = prison.GetPrisoner(i + 1);
-                box = prisoner.FindYourBox(room, allowedNoOfBoxes);
+                IPrisoner prisoner = prison.GetPrisoner(i + 1);
+                box = prisoner.FindYourBox(room);
 
                 if (box == null)
                     break;

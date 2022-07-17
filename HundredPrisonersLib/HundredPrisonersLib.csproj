@@ -42,9 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Box.cs" />
+    <Compile Include="Classes\Factory.cs" />
     <Compile Include="Interfaces\IRoom.cs" />
     <Compile Include="Interfaces\IRiddle.cs" />
-    <Compile Include="Interfaces\IPisoner.cs" />
+    <Compile Include="Interfaces\IPrisoner.cs" />
     <Compile Include="Interfaces\IPrison.cs" />
     <Compile Include="Interfaces\IBox.cs" />
     <Compile Include="Classes\Prison.cs" />

@@ -6,24 +6,27 @@ using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
 {
-    public class Pisoner : IPisoner
+    internal class Prisoner : IPrisoner
     {
         public int PrisonerId { get; set; }
         public List<int> VisitedBoxes { get; set; }
         public bool FoundMyBox { set { } }
 
-        public Pisoner(int prisonerId)
+        public int BoxQuota {get; set;}
+
+        public Prisoner(int prisonerId, int boxQuota)
         {
+            BoxQuota = boxQuota;
             PrisonerId = prisonerId;
             VisitedBoxes = new List<int>();
             FoundMyBox = false;
         }
 
-        public IBox FindYourBox(IRoom room, int allowedNoOfBoxes)
+        public IBox FindYourBox(IRoom room)
         {
             int boxId = this.PrisonerId;
 
-            for (int i = 0; i < allowedNoOfBoxes; i++)
+            do
             {
                 var box = VistiteBox(room, boxId);
 
@@ -39,7 +42,6 @@ namespace HundredPrisonersRiddle
                     }
 
                     boxId = box.Inside;
-                    i++;
                 }
                 else
                 {//Found his box :)
@@ -47,7 +49,7 @@ namespace HundredPrisonersRiddle
                     FoundMyBox = true;
                     return box;
                 }
-            }
+            }while(VisitedBoxes.Count != this.BoxQuota);
 
             return null;
         }

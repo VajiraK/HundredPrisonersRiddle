@@ -2,7 +2,7 @@
 {
     public interface IPrison
     {
-        void FillPrisoners();
-        IPisoner GetPrisoner(int prisonerId);
+        void FillPrisoners(int allowedNoOfBoxes);
+        IPrisoner GetPrisoner(int prisonerId);
     }
 }

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
 {
-    public class Prison : IPrison
+    internal class Prison : IPrison
     {
-        public IPisoner[] Prisoners = new IPisoner[100];
+        public IPrisoner[] Prisoners = new IPrisoner[100];
 
-        public void FillPrisoners()
+        public void FillPrisoners(int allowedNoOfBoxes)
         {
             for (int i = 0; i < 100; i++)
             {
-                Prisoners[i] = new Pisoner(i + 1);
+                Prisoners[i] = new Prisoner(i + 1, allowedNoOfBoxes);
             }
         }
 
-        public IPisoner GetPrisoner(int prisonerId)
+        public IPrisoner GetPrisoner(int prisonerId)
         {
             return Prisoners[prisonerId - 1];
         }

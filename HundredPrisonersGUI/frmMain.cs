@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing;
 using HundredPrisonersRiddle;
+using HundredPrisonersLib.Classes;
 
 namespace HundredPrisonersGUI
 {
@@ -22,8 +23,9 @@ namespace HundredPrisonersGUI
             int step = 50;
             int boxCount = 0;
 
-            riddle = new Riddle();
-            riddle.Initialize();
+            var f = new Factory();
+            IRiddle riddle = f.GetRiddle();
+            riddle.Initialize(50);
             IRoom room = riddle.GetRoom();
 
             for (int a = 0; a < 10; a++)
@@ -51,7 +53,7 @@ namespace HundredPrisonersGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            riddle.Run(54);
+            riddle.Run();
         }
     }
 }

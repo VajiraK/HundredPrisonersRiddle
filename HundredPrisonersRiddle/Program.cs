@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HundredPrisonersLib.Classes;
 
 namespace HundredPrisonersRiddle
 {
@@ -12,13 +13,14 @@ namespace HundredPrisonersRiddle
         {
             for (int a = 0; a < 10000; a++)
             {
-                IRiddle riddle = new Riddle();
+                var f = new Factory();
+                IRiddle riddle = f.GetRiddle();
                 int c = 0;
 
                 for (int i = 0; i < 100; i++)
                 {
-                    riddle.Initialize();
-                    bool ret = riddle.Run(50);
+                    riddle.Initialize(50);
+                    bool ret = riddle.Run();
 
                     if (ret)
                         c++;

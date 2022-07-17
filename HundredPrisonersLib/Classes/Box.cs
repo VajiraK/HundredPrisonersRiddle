@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HundredPrisonersRiddle
 {
-    public class Box : IBox
+    internal class Box : IBox
     {
         private bool doPrint = false;
 

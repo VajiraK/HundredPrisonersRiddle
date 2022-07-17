@@ -2,12 +2,12 @@
 
 namespace HundredPrisonersRiddle
 {
-    public interface IPisoner
+    public interface IPrisoner
     {
         int PrisonerId { get; set; }
+        int BoxQuota { get; set; }
         bool FoundMyBox { set; }
         List<int> VisitedBoxes { get; set; }
-
-        IBox FindYourBox(IRoom room, int allowedNoOfBoxes);
+        IBox FindYourBox(IRoom room);
     }
 }
