@@ -1,9 +1,7 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Drawing;
+﻿using HundredPrisonersLib.Classes;
 using HundredPrisonersRiddle;
-using HundredPrisonersLib.Classes;
+using System;
+using System.Windows.Forms;
 
 namespace HundredPrisonersGUI
 {
@@ -24,7 +22,7 @@ namespace HundredPrisonersGUI
             int boxCount = 0;
 
             var f = new Factory();
-            IRiddle riddle = f.GetRiddle();
+            riddle = f.GetRiddle();
             riddle.Initialize(50);
             IRoom room = riddle.GetRoom();
 
